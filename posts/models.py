@@ -20,7 +20,7 @@ class Post(models.Model):
         related_name="posts"
     )
     group = models.ForeignKey(
-        "Group", on_delete=models.CASCADE, blank=True, null=True
+        'Group', on_delete=models.SET_NULL, blank=True, null=True
     )
 
 
@@ -32,14 +32,11 @@ class Group(models.Model):
     title(имя), адрес(slug) и описание(description)
     """
 
-    title = models.CharField()
-    slug = models.SlugField()
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=50)
     description = models.TextField()
 
     def __str__(self):
         """Метод для печати поля title"""
 
         return self.title
-
-
-
