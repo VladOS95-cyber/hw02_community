@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Group
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -15,3 +15,13 @@ class PostAdmin(admin.ModelAdmin):
 # при регистрации модели Post источником конфигурации для неё 
 # назначаем класс PostAdmin
 admin.site.register(Post, PostAdmin)
+
+class GroupAdmin(admin.ModelAdmin):
+    """Регистрация группы в админке """
+
+    list_display = ("pk", "title", "slug", "description")
+    search_fields = ("title",)
+    empty_value_display = "-пусто-"
+
+
+admin.site.register(Group, GroupAdmin)
