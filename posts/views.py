@@ -1,7 +1,6 @@
-from .models import Post, Group
+from django.shortcuts import get_object_or_404, render
 
-
-from django.shortcuts import render, get_object_or_404
+from .models import Group, Post
 
 
 def index(request):
@@ -9,9 +8,10 @@ def index(request):
     # собираем тексты постов в один, разделяя новой строкой
     return render(request, "index.html", {"posts": latest})
 
+
 def group_posts(request, slug):
     """Функция возвращает страницу сообщества
-    и выводит до 12 записей на странице 
+    и выводит до 12 записей на странице
     """
 
     group = get_object_or_404(Group, slug=slug)

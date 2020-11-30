@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Post, Group
+
+from .models import Group, Post
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -9,12 +10,9 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ("text",)
     # добавляем возможность фильтрации по дате
     list_filter = ("pub_date",)
-    empty_value_display = "-пусто-" # это свойство сработает для всех колонок: где пусто - там будет эта строка 
+    # это свойство сработает для всех колонок: где пусто - там будет эта строка
+    empty_value_display = "-пусто-"
 
-
-# при регистрации модели Post источником конфигурации для неё 
-# назначаем класс PostAdmin
-admin.site.register(Post, PostAdmin)
 
 class GroupAdmin(admin.ModelAdmin):
     """Регистрация группы в админке """
@@ -24,4 +22,6 @@ class GroupAdmin(admin.ModelAdmin):
     empty_value_display = "-пусто-"
 
 
+# регистрируем модели Post и Group
+admin.site.register(Post, PostAdmin)
 admin.site.register(Group, GroupAdmin)
