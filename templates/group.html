@@ -1,22 +1,15 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% extends "base.html" %}
-    {% block title %} Записи сообщества {{ group }} {% endblock %}
-  </head>
-    {% block header %}{{ group }}{% endblock %}
+    {% block title %}Записи сообщества {{ group }}{% endblock %}
+    {% block header %} {{ group }} {% endblock %}
       {% block content %}
     <p>
-        {{ group.description|linebreaksbr  }}
+        {{ group.description }}
     </p>
     {% for post in posts %}
     <h3>
         Автор:{{ post.author }}, дата публикации: {{ post.pub_date|date:"d M Y" }}
     </h3>
-    <p> {{ post.text|linebreaksbr }}</p>
+    <p> {{ post.text }}</p>
     <hr>
     {% endfor %}
-  {% endblock %}
-  
-</html>
+    {% endblock %}

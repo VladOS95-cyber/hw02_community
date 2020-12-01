@@ -10,9 +10,9 @@ def index(request):
 
 
 def group_posts(request, slug):
-    '''Функция возвращает страницу сообщества
+    """Функция возвращает страницу сообщества
     и выводит до 12 записей на странице
-    '''
+    """
 
     group = get_object_or_404(Group, slug=slug)
     posts = group.posts.all()[:12]
