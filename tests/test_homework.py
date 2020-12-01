@@ -25,7 +25,7 @@ def search_field(fields, attname):
 
 
 def search_refind(execution, user_code):
-    '''Поиск запуска'''
+    """Поиск запуска"""
     for temp_line in user_code.split('\n'):
         if re.search(execution, temp_line):
             return True
@@ -187,11 +187,11 @@ class TestGroupView:
         ), 'Отредактируйте HTML-шаблон, не найдено описание группы `<p>{{ описание_группы }}</p>`'
 
         assert re.search(
-            r'<\s*p(\s+class='.+'|\s*)>\s*' + post_with_group.text + r'\s*<\s*\/p\s*>',
+            r'<\s*p(\s+class=".+"|\s*)>\s*' + post_with_group.text + r'\s*<\s*\/p\s*>',
             html
         ), 'Отредактируйте HTML-шаблон, не найден текст поста `<p>{{ текст_поста }}</p>`'
 
         assert re.search(
             r'(д|Д)ата публикации:\s*' + post_with_group.pub_date.strftime('%d %b %Y'),
             html
-        ), 'Отредактируйте HTML-шаблон, не найдена дата публикации `дата публикации: {{ дата_публикации|date:'d M Y' }}`'
+        ), 'Отредактируйте HTML-шаблон, не найдена дата публикации `дата публикации: {{ дата_публикации|date:"d M Y" }}`'
